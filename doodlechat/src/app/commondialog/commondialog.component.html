@@ -1,0 +1,15 @@
+<div class="header">
+    Add group members
+</div>
+<form #addGroup="ngForm" name="addGroup" style="text-align: center; display: grid;">
+    <mat-form-field>
+        <input type="text" matInput placeholder="Gropu name" name="groupname" [(ngModel)]="groupname" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Select user</mat-label>
+        <mat-select name="users" multiple [(ngModel)]="users" required>
+            <mat-option *ngFor="let i of allUsers" [value]=i>{{i?.fname +' '+ i?.lname}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="btnclr" mat-button (click)="addGrp(addGroup)" cdkFocusInitial>Add</button>
+</form>

@@ -1,0 +1,18 @@
+.cntr{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.btnclr{
+    background-color: aliceblue;
+    margin: 5px;
+    border: 1px solid #80808094;
+
+}
+.crd{
+    width: 50%;
+}
+.w100{
+    width: 100%;
+}

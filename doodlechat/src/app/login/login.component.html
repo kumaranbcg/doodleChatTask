@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="cntr">
+            <mat-card class="pad">
+                <mat-card-title style="padding: 10px;">Log In</mat-card-title>
+                <mat-card-content>
+                    <form [formGroup]="logInForm" (ngSubmit)="login()">
+                        <p>
+                            <mat-form-field class="w60">
+                                <input type="text" matInput placeholder="Email" formControlName="email">
+                            </mat-form-field>
+                            <mat-error *ngIf="formControls?.email?.errors">
+                                <span *ngIf="formControls?.email?.errors?.required">
+                                Email is required
+                                </span>
+                                <span *ngIf="formControls?.email?.errors?.pattern">
+                                    Email is invalid
+                                </span>
+                              </mat-error>
+                        </p>
+        
+                        <p>
+                            <mat-form-field class="w60">
+                                <input [type]="showPassword ? 'text': 'password'" matInput placeholder="Password" formControlName="password" (keydown.space)="$event.preventDefault()">
+                                <mat-icon matSuffix *ngIf="!showPassword" class="tnxxxwtt" (click)="showPassword = !showPassword">visibility_off</mat-icon>
+                                <mat-icon matSuffix *ngIf="showPassword" class="tnxxxwtt" (click)="showPassword = !showPassword">visibility</mat-icon>
+                            </mat-form-field>
+                        </p>
+                        <span *ngIf="error" style="color: red;">{{error}}</span>
+                        <div class="btn">
+                            <button class="btnclr" type="button" mat-button (click)="signUp()">Sign Up</button>
+                            <button class="btnclr" type="submit" mat-button>Login</button>
+                        </div>
+        
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+    </div>
+</div>
+<ngx-spinner></ngx-spinner>

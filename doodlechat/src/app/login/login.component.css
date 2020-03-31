@@ -1,0 +1,22 @@
+.cntr{
+display: flex;
+justify-content: center;
+padding: 13%;
+}
+
+.btnclr{
+    background-color: aliceblue;
+    border: 1px solid #80808094;
+}
+.btn{
+    display: flex;
+    justify-content: space-around;
+}
+.pad{
+    width: 100%;
+    padding: 3% 5% 5% 5%;
+    text-align: center;
+}
+.w60{
+    width: 60%;
+}

@@ -1,0 +1,81 @@
+.bg {
+    min-width: 30%;
+    background-color: #35353a0d;
+    border: 1px solid #8080802b;
+}
+.name {
+    padding: 10px;
+    font-size: 22px;
+    font-weight: 100;
+}
+.pad {
+    border-bottom: 1px solid #8080802b;
+    padding: 10px;
+    cursor: pointer;
+}
+.cl{
+    border-top: 1px solid #8080804d;
+    padding: 10px 1px 10px 10px;
+    font-weight: 100;
+    font-size: 18px;
+    border-bottom: 1px solid #8080804d;
+    background: #80808059;
+}
+.chat {
+    width: 96%;
+    padding: 10px;
+    height: 85%;
+    border-bottom: 1px solid #8080804d;
+    overflow-x: auto;
+}
+.typee {
+    width: 95%;
+    border-radius: 47px;
+    height: 100%;
+    padding: 14px;
+    border: 1px solid grey;
+    outline: none;
+}
+.chatbtm{
+    display: inline-flex;
+    width: 100%;
+    height: 4%;
+    margin: 12px 0 0 0;
+}
+.start{
+    display: flex;
+    height: 100%;
+    background: #2d2d310d;
+    max-height: 100%;
+}
+.msgr{
+    border-radius: 10px;
+    border: 1px solid #8080802e;
+    min-width: 5%;
+    background: #00800061;
+    padding: 5px 10px 5px 10px;
+    margin: 10px 5px 5px 5px;
+    float: right;
+}
+.msgl{
+    border-radius: 10px;
+    border: 1px solid #8080802e;
+    min-width: 5%;
+    background: #00800014;;
+    padding: 5px 10px 5px 10px;
+    margin: 10px 5px 5px 5px;
+    float: left;
+}
+.btnsend{
+    float: right;
+    padding-top: 5px;
+}
+.chathd {
+    position: fixed;
+    overflow: hidden;
+    background: #eee;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #80808047;
+    display: inline-flex;
+}

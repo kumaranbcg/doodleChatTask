@@ -1,0 +1,75 @@
+<div class="row" class="start">
+    <div class="bg">
+        <div style="padding: 10px;">
+            <div style="display: inline-flex;">
+                <ngx-avatar name="{{currentUser?.fname +' '+currentUser?.lname}}"></ngx-avatar> 
+                <span class="name">{{currentUser?.fname +' '+currentUser?.lname}}</span>
+            </div>
+            <span style="float: right;">
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="openModel()" *ngIf="allUsers?.length>1">Add Group</button>
+                    <button mat-menu-item (click)="logOut()">Logout</button>
+                </mat-menu>
+            </span> 
+        </div>
+        <div class="cl">
+            Chat List
+        </div>
+        <div *ngFor="let i of allUsers" [ngStyle]="{'background': currentChat?._id == i?._id ? '#add8e69c' : 'none'}">
+            <div *ngIf="currentUser?.email!=i?.email" (click)="getChat(i)" class="pad">
+                <div style="display: flex;">
+                    <ngx-avatar name="{{i?.fname + ' ' +i?.lname}}"></ngx-avatar> 
+                    <span class="name">{{i?.fname + ' ' +i?.lname}}</span>
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let i of allGroups" (click)="getChat(i)" class="pad" [ngStyle]="{'background': currentChat?._id == i?._id ? '#add8e69c' : 'none'}">
+            <div style="display: flex;">
+                <ngx-avatar name="{{i?.groupname}}"></ngx-avatar> 
+                <span class="name">{{i?.groupname}}</span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%;" *ngIf="currentChat">
+        <div class="chathd">
+            <ngx-avatar name="{{currentChat?.role=='user' ? (currentChat?.fname + ' '+ currentChat?.fname) : currentChat?.groupname}}"></ngx-avatar> 
+            <span style="padding: 10px 0px 0px 20px;font-size: 25px;"> 
+                {{currentChat?.role=='user' ? (currentChat?.fname + ' '+ currentChat?.lname) : currentChat?.groupname}}
+            </span>
+        </div>
+        <div class="chat" id="chat">
+            <div style="display: grid;padding-top: 70px;">
+                <div *ngFor="let i of chats" >
+                    <div *ngIf="i?.senderid?.email == currentUser?.email" class="msgr">
+                        <div *ngIf="i?.groupid" style="font-weight: 500;font-size: 15px;color: #1091ffd1;">{{i?.senderid?.fname + ' ' + i?.senderid?.lname}}</div>
+                        <span style="float: left;padding-right: 5px;font-size: 13px;">{{i?.message}}</span>
+                        <span style="float: right;font-size: 9px;">{{i?.createdAt | date:'shortTime'}}</span>
+                    </div>
+                    <div *ngIf="i?.senderid?.email != currentUser?.email" class="msgl">
+                        <div *ngIf="i?.groupid" style="font-weight: 500;font-size: 15px;color: green;">{{i?.senderid?.fname + ' ' + i?.senderid?.lname}}</div>
+                        <div>
+                            <span style="float: left;padding-right: 5px;font-size: 13px;">{{i?.message}}</span>
+                            <span style="float: right;font-size: 9px;">{{i?.createdAt | date:'shortTime'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatbtm">
+            <div style="width: 100%">
+                <form [formGroup]="chatForm" *ngIf="currentChat" (ngSubmit)="sendMessage()" style="width:100%">
+                    <p>
+                        <input type="text" placeholder="Type a message" formControlName="message" class="typee">
+                    </p>
+                </form>
+            </div>
+            <div>
+                <button mat-button type="button" (click)="sendMessage()" class="btnsend">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner></ngx-spinner>
